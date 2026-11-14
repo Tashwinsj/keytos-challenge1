@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Don'tDash is a fictional supper club. A place was set for you.">
+  <title>Don'tDash — a place was set for you</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff3008'/%3E%3Cpath d='M24 7H12a6 6 0 0 0 0 12h6' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M15 16l4 4 4-4' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cellipse cx='16' cy='26' rx='7' ry='2.2' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,700;1,9..144,560&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-scene="table" data-veil="none">
+  <div class="stage">
+    <header class="mast">
+      <div class="brand">
+        <div class="lockup">
+          <svg class="mark" viewBox="0 0 72 72" role="img" aria-label="Don'tDash">
+            <rect width="72" height="72" rx="18" fill="#ff3008"/>
+            <path d="M54 16H28a14 14 0 0 0 0 28h14" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+            <path d="M36 36l8 10 8-10" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <ellipse cx="36" cy="60" rx="16" ry="5.5" fill="#fff"/>
+            <ellipse cx="36" cy="58.5" rx="9" ry="2.5" fill="#ff3008"/>
+          </svg>
+          <div>
+            <p class="eyebrow">a supper club</p>
+            <h1 class="wordmark"><span>Don't</span>Dash</h1>
+          </div>
+        </div>
+        <p class="tag">You dashed. You sat. A place was set for you.</p>
+        <p id="membership" class="membership">Membership: a standing reservation</p>
+      </div>
+      <div class="meter">
+        <div class="meter-top">
+          <span id="meter-label" class="meter-label">How close you are to a graceful exit</span>
+          <span id="meter-value">6%</span>
+        </div>
+        <div id="meter" class="meter-track" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="6" aria-labelledby="meter-label">
+          <div id="meter-fill"></div>
+        </div>
+        <p id="meter-note" class="meter-note"></p>
+      </div>
+      <div class="clocks">
+        <div class="souffle-wrap">
+          <div id="souffle" class="souffle" aria-hidden="true"></div>
+          <span>soufflé</span>
+        </div>
+        <p id="marlow-status">Marlow is at the table.</p>
+        <p id="chef-status">Mid-course. The kitchen line is down.</p>
+        <p id="bell" class="visually-hidden" aria-live="polite"></p>
+      </div>
+    </header>
+
+    <div class="play">
+      <section id="room">
+        <p class="room-kicker">The dining room</p>
+        <p id="marlow-line" class="line" aria-live="polite">You're here. I told the asparagus you were coming, and it stood up straighter. Premium has been practicing his sigh under the table. Sit all the way down.</p>
+        <div class="wall">
+          <button type="button" id="door-btn" class="door" data-action="door">
+            <span class="door-drawing" aria-hidden="true"></span>
+            <span class="object-name">Front door</span>
+            <span class="object-sub">It looks available</span>
+          </button>
+          <button type="button" id="door-guest" class="guest" data-action="photos" hidden>
+            <span class="object-name">Glen</span>
+            <span class="object-sub">in the doorway, with photos</span>
+          </button>
+          <div id="marlow-figure" class="host">
+            <div class="host-face" aria-hidden="true"></div>
+            <span class="bow" aria-hidden="true"></span>
+            <p class="host-name">Marlow</p>
+            <p id="marlow-presence" class="object-sub">your host</p>
+          </div>
+          <button type="button" id="phone-btn" class="phone" data-action="phone">
+            <span class="phone-drawing" aria-hidden="true"></span>
+            <span class="object-name">Hall phone</span>
+            <span class="object-sub">a line in the wall</span>
+          </button>
+          <button type="button" id="alarm-btn" class="alarm" data-action="alarm">
+            <span class="object-name">Restroom</span>
+            <span class="object-sub">Fire alarm. Pull in case of feelings</span>
+          </button>
+          <button type="button" id="swing-btn" class="swing" data-action="swing">
+            <span class="swing-drawing" aria-hidden="true"></span>
+            <span>
+              <span class="object-name">Swing door</span>
+              <span class="object-sub">service</span>
+            </span>
+          </button>
+        </div>
+        <div class="cloth">
+          <div class="candles" aria-hidden="true"><i></i><i></i><i></i></div>
+          <button type="button" id="place-card" class="place-card" data-action="card" aria-pressed="false" aria-label="Place card. Guest of the Evening.">
+            <span class="card-face card-front">
+              <em>Don'tDash</em>
+              <strong>Guest of the Evening</strong>
+            </span>
+            <span class="card-face card-back" aria-hidden="true">
+              If you insist on being useful, the pots are through the swing door.
+            </span>
+          </button>
+          <div id="plate" class="plate">
+            <span id="plate-label">a place, set</span>
+          </div>
+          <button type="button" id="basket-btn" class="basket" data-action="offers">
+            <span class="object-name">The bread basket</span>
+            <span class="object-sub">a list inside</span>
+          </button>
+          <button type="button" id="ticket-btn" class="ticket-btn" data-action="ticket">
+            <span class="object-name">Tonight's ticket</span>
+            <span class="object-sub">on the pass, slightly greasy</span>
+          </button>
+          <button type="button" id="bill-btn" class="bill-btn" data-action="bill">
+            <span class="object-name">The bill</span>
+            <span class="object-sub">already settled, emotionally</span>
+          </button>
+          <button type="button" id="dog-btn" class="dog" data-action="dog">
+            <span class="object-name">Premium</span>
+            <span class="object-sub">the plan, and the dog</span>
+          </button>
+          <div id="napkin-prop" class="napkin" aria-hidden="true"></div>
+          <p class="courses-label">Already on the evening</p>
+          <ul id="courses" class="courses"></ul>
+        </div>
+      </section>
+
+      <section id="kitchen" hidden>
+        <p class="room-kicker">The pass</p>
+        <h2>Nobody polite is in here.</h2>
+        <p id="kitchen-note" aria-live="polite"></p>
+        <div class="dishes">
+          <button type="button" class="dish" data-action="take-plate" data-plate="0">
+            <span class="dish-name">Soup plate</span>
+            <span class="dish-state">still attached</span>
+          </button>
+          <button type="button" class="dish" data-action="take-plate" data-plate="1">
+            <span class="dish-name">Salad plate</span>
+            <span class="dish-state">still attached</span>
+          </button>
+          <button type="button" class="dish" data-action="take-plate" data-plate="2">
+            <span class="dish-name">The main</span>
+            <span class="dish-state">still attached</span>
+          </button>
+          <button type="button" class="dish" data-action="take-plate" data-plate="3">
+            <span class="dish-name">Barely touched</span>
+            <span class="dish-state">still attached</span>
+          </button>
+        </div>
+        <div class="wash-row">
+          <button type="button" class="btn" id="sink" data-action="sink">The sink</button>
+          <button type="button" class="btn" id="check" data-action="take-check" hidden>
+            <span class="check-kicker">guest check</span>
+            <strong>membership …… 86</strong>
+            <span>Spike it or it never happened.</span>
+          </button>
+          <button type="button" class="btn" id="spindle" data-action="spike">The check spike</button>
+        </div>
+        <p id="spindle-state">The printer is quiet.</p>
+        <button type="button" class="btn quiet" data-action="abandon">Return to the dining room</button>
+        <p class="fine">Leaving the pass puts the paperwork back under Still Seated.</p>
+      </section>
+
+      <section id="alley" hidden>
+        <p class="room-kicker">The alley</p>
+        <h2>Fresh air.</h2>
+        <p id="alley-note" aria-live="polite"></p>
+        <div class="alley-doors">
+          <button type="button" class="btn" id="street-door" data-action="street">The street door</button>
+          <button type="button" class="btn" id="reenter" data-action="reenter">The front door of Don'tDash</button>
+        </div>
+      </section>
+
+      <section id="cleared" hidden>
+        <p class="room-kicker">After</p>
+        <div class="empty-chair" aria-hidden="true"></div>
+        <div class="mint" aria-hidden="true"></div>
+        <h2>Your place was cleared.</h2>
+        <p id="cleared-sub" aria-live="polite"></p>
+        <p>The asparagus has been informed. It sat back down.</p>
+        <button type="button" class="btn quiet" data-action="reset">set another place</button>
+      </section>
+
+      <form id="talk" class="talk" action="#" autocomplete="off">
+        <label for="talk-input">Say something to the table</label>
+        <div class="talk-row">
+          <input id="talk-input" type="text" maxlength="200" autocomplete="off" placeholder="Marlow is listening. He is very good at it.">
+          <button class="btn" type="submit">Say it</button>
+        </div>
+      </form>
+
+      <div id="overlay-toast" class="overlay" hidden>
+        <article class="panel">
+          <p class="eyebrow">everyone is standing</p>
+          <h2>A toast</h2>
+          <div class="glass" aria-hidden="true">
+            <div class="glass-bowl"><div id="toast-fill"></div></div>
+            <div class="glass-stem"></div>
+            <div class="glass-foot"></div>
+          </div>
+          <p id="toast-copy" aria-live="polite"></p>
+          <button type="button" class="btn" id="toast-excuse" data-action="excuse">Excuse me</button>
+          <button type="button" class="btn" id="toast-sit" data-action="toast-sit" hidden>The toast is finished</button>
+        </article>
+      </div>
+
+      <div id="overlay-survey" class="overlay" hidden>
+        <article class="panel">
+          <p class="eyebrow">Marlow pulls his chair an inch closer</p>
+          <form id="survey-form" action="#" autocomplete="off">
+            <p id="survey-count"></p>
+            <h2 id="survey-prompt"></h2>
+            <div id="survey-choices" role="radiogroup" aria-labelledby="survey-prompt"></div>
+            <div id="survey-text-wrap" hidden>
+              <label class="visually-hidden" for="survey-text">Your answer</label>
+              <input id="survey-text" type="text" maxlength="160" autocomplete="off">
+            </div>
+            <p id="survey-nudge" hidden>I just want to understand.</p>
+            <button type="submit" class="btn" id="survey-next">Tell him</button>
+          </form>
+          <div id="hug-box" hidden>
+            <h2 id="hug-title"></h2>
+            <p id="hug-copy"></p>
+            <button type="button" class="btn" data-action="hug-yes">I'm sure</button>
+            <button type="button" class="btn quiet" data-action="hug-wait">Wait, ask me again</button>
+          </div>
+        </article>
+      </div>
+
+      <div id="overlay-offers" class="overlay" hidden>
+        <article class="panel">
+          <p class="eyebrow">from the bread basket</p>
+          <h2>The list</h2>
+          <p>If you hoped this list contained a goodbye, it contains several ways to stay, which is the house specialty.</p>
+          <ul id="offer-list" class="offer-list"></ul>
+          <button type="button" class="btn quiet" data-action="fold-offers">Fold it back into the basket</button>
+        </article>
+      </div>
+
+      <div id="overlay-phone" class="overlay" hidden>
+        <article class="panel hall">
+          <p class="eyebrow">the hall</p>
+          <h2>The hall phone</h2>
+          <p>It is a prop of a phone. It does not dial a real number. The chef and the reservation book both live in the wall.</p>
+          <div id="phone-menu">
+            <div id="phone-closed">
+              <p>The kitchen line is closed. Reservations will pick up, because reservations always will.</p>
+              <button type="button" class="btn" data-action="call-reservations">Call anyway</button>
+            </div>
+            <div id="phone-open" hidden>
+              <p>Between courses. The chef has the line, briefly, and he is not a patient man.</p>
+              <button type="button" class="btn" data-action="call-chef">Speak to the chef</button>
+              <button type="button" class="btn quiet" data-action="call-reservations">Call reservations instead</button>
+            </div>
+          </div>
+          <form id="chef-form" action="#" autocomplete="off" hidden>
+            <label for="chef-input">He doesn't want the item. He wants the call.</label>
+            <input id="chef-input" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocapitalize="off">
+            <p id="chef-reply" aria-live="polite"></p>
+            <button type="submit" class="btn">Say it into the phone</button>
+          </form>
+          <div id="phone-result" hidden>
+            <p id="phone-result-text"></p>
+            <button type="button" class="btn" data-action="hangup">Sit back down</button>
+          </div>
+          <button type="button" class="btn quiet" id="phone-back" data-action="hangup">Put the phone back</button>
+        </article>
+      </div>
+
+      <div id="overlay-photos" class="overlay" hidden>
+        <article class="panel">
+          <p class="eyebrow">Glen, from the other end</p>
+          <h2>You have to see this</h2>
+          <p id="photo-count"></p>
+          <p id="photo-caption" class="photo-caption"></p>
+          <button type="button" class="btn" data-action="next-photo">Next photo</button>
+          <button type="button" class="btn quiet" data-action="close-photos">Put the photos away</button>
+        </article>
+      </div>
+
+      <div id="overlay-bill" class="overlay" hidden>
+        <article class="panel">
+          <p class="eyebrow">folio</p>
+          <h2>The bill</h2>
+          <ul class="bill-lines">
+            <li><span>Asparagus, informed</span><span>seated</span></li>
+            <li><span>Chair practice</span><span>seated</span></li>
+            <li><span>Emotional labor</span><span>complimentary</span></li>
+            <li><span>Your absence</span><span>not yet on the menu</span></li>
+          </ul>
+          <p>Settled by the concept of you remaining. This is not a real charge.</p>
+          <button type="button" class="btn" data-action="dispute">Dispute the compliments</button>
+          <button type="button" class="btn" data-action="tip">Tip with another minute</button>
+          <button type="button" class="btn quiet" data-action="close-bill">Close the folio</button>
+        </article>
+      </div>
+
+      <div id="overlay-ticket" class="overlay" hidden>
+        <article class="panel ticket-panel">
+          <p class="ticket-kicker">Tonight's 86</p>
+          <h2>86</h2>
+          <ul>
+            <li>the oyster special</li>
+            <li>small talk about work</li>
+            <li>your membership</li>
+          </ul>
+          <p>The chef takes the pass between courses. Say it the way the kitchen says it.</p>
+          <button type="button" class="btn quiet" data-action="close-ticket">Put the ticket back</button>
+        </article>
+      </div>
+    </div>
+
+    <p class="colophon">Don'tDash is a made-up supper club. Nothing here is a real account, a real charge, or a real phone call.</p>
+  </div>
+  <noscript>The evening needs JavaScript to keep you at the table. Nothing is loaded from an account, because there isn't one.</noscript>
+  <script src="evening.js"></script>
+</body>
+</html>
